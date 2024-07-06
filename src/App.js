@@ -1,31 +1,32 @@
 import React from "react";
-import "./scss/app.scss";
 import Header from "./components/header";
 import Categories from "./components/categories";
 import Sort from "./components/Sort";
 import PizzaBlock from "./components/PizzaBlock";
+import pizzas from "./assets/piazzas.json";
+import "./scss/app.scss";
 
 function App() {
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <Header />
-      <div class="content">
-        <div class="container">
-          <div class="content__top">
+      <div className="content">
+        <div className="container">
+          <div className="content__top">
             <Categories />
             <Sort />
           </div>
-          <h2 class="content__title">Все пиццы</h2>
-          <div class="content__items">
-            <PizzaBlock title="Mексиканская" price={500} />
-            <PizzaBlock title="Грибная" price={750} />
-            <PizzaBlock title="Mексиканская" price={500} />
-            <PizzaBlock title="Mексиканская" price={500} />
-            <PizzaBlock title="Mексиканская" price={500} />
-            <PizzaBlock title="Mексиканская" price={500} />
-            <PizzaBlock title="Mексиканская" price={500} />
-            <PizzaBlock title="Mексиканская" price={500} />
-            <PizzaBlock title="Mексиканская" price={500} />
+          <h2 className="content__title">Все пиццы</h2>
+          <div className="content__items">
+            {pizzas.map((obj) => (
+              <PizzaBlock
+                title={obj.title}
+                price={obj.price}
+                imageUrl={obj.imageUrl}
+                sizes={obj.sizes}
+                types={obj.types}
+              />
+            ))}
           </div>
         </div>
       </div>
